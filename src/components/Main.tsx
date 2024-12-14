@@ -1,6 +1,12 @@
-import Guitar from "./Guitar"
+import GuitarIem from "./Guitar"
+import type { Guitar } from "../types/index"
 
-export default function Main({ data, addToCart }) {
+type MainProps = {
+    data: Guitar[]
+    addToCart: (item: Guitar) => void
+}
+
+export default function Main({ data, addToCart } : MainProps) {
 
     return (
         <main className="container-xl mt-5">
@@ -8,7 +14,7 @@ export default function Main({ data, addToCart }) {
 
             <div className="row mt-5">
                 {data.map((guitar) => (
-                    <Guitar
+                    <GuitarIem
                         key={guitar.id}
                         guitar={guitar}
                         addToCart={addToCart}
