@@ -1,4 +1,16 @@
-export default function Header({ cart, removeFromCart, increaseQuantity, decreaseQuantity, clearCart, isEmtpy, cartTotal }) {
+import type { Guitar,CartItem } from "../types/index"
+
+type HeaderProps = {
+    cart: CartItem[]
+    removeFromCart: (id : Guitar['id']) => void
+    increaseQuantity: (id : Guitar['id']) => void
+    decreaseQuantity: (id : Guitar['id']) => void
+    clearCart: () => void
+    isEmtpy: boolean
+    cartTotal: number
+}
+
+export default function Header({ cart, removeFromCart, increaseQuantity, decreaseQuantity, clearCart, isEmtpy, cartTotal } : HeaderProps) {
 
     return (
         <>
