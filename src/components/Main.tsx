@@ -1,4 +1,4 @@
-import GuitarIem from "./Guitar"
+import GuitarItem from "./Guitar"
 import type { Guitar } from "../types/index"
 
 type MainProps = {
@@ -14,7 +14,7 @@ export default function Main({ data, addToCart } : MainProps) {
 
             <div className="row mt-5">
                 {data.map((guitar) => (
-                    <GuitarIem
+                    <GuitarItem
                         key={guitar.id}
                         guitar={guitar}
                         addToCart={addToCart}
