@@ -1,12 +1,14 @@
 import GuitarItem from "./Guitar"
 import type { Guitar } from "../types/index"
+import { Dispatch } from "react"
+import type { CartActions } from "../reducers/cart-reducer"
 
 type MainProps = {
     data: Guitar[]
-    addToCart: (item: Guitar) => void
+    dispatch: Dispatch<CartActions>
 }
 
-export default function Main({ data, addToCart } : MainProps) {
+export default function Main({ data, dispatch } : MainProps) {
 
     return (
         <main className="container-xl mt-5">
@@ -17,7 +19,7 @@ export default function Main({ data, addToCart } : MainProps) {
                     <GuitarItem
                         key={guitar.id}
                         guitar={guitar}
-                        addToCart={addToCart}
+                        dispatch={dispatch}
                     />
                 ))}
             </div>

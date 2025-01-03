@@ -1,27 +1,22 @@
-
+import { useReducer } from "react"
 import Header from "./components/Header"
 import Footer from "./components/Footer"
 import Main from "./components/Main"
-import { useCart } from "./hooks/useCart.ts"
+import { cartReducer, initialState } from "./reducers/cart-reducer.ts"
 
 function App() {
 
-  const { cart, data, addToCart, removeFromCart, increaseQuantity, decreaseQuantity, clearCart, isEmtpy, cartTotal } = useCart()
-  
+  const [state, dispatch] = useReducer(cartReducer, initialState)
+ 
   return (
     <>
       <Header
-        cart={cart}
-        removeFromCart={removeFromCart}
-        increaseQuantity={increaseQuantity}
-        decreaseQuantity={decreaseQuantity}
-        clearCart={clearCart}
-        isEmtpy={isEmtpy}
-        cartTotal={cartTotal}
+        cart={state.cart}
+        dispatch={dispatch}
       />
       <Main
-        data={data}
-        addToCart={addToCart}
+        data={state.data}
+        dispatch={dispatch}
       />
       <Footer />
     </>

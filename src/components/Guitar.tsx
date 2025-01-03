@@ -1,16 +1,18 @@
 import type { Guitar } from "../types/index"
+import { Dispatch } from "react"
+import type { CartActions } from "../reducers/cart-reducer"
 
 export type GuitarProps = {
     guitar: Guitar
-    addToCart: (item: Guitar) => void
+    dispatch: Dispatch<CartActions>
 }
 
-export default function GuitarItem({guitar, addToCart} : GuitarProps) {
+export default function GuitarItem({ guitar, dispatch }: GuitarProps) {
 
-    const {name, image, description, price} = guitar
-    
+    const { name, image, description, price } = guitar
+
     return (
-        
+
         <div className="col-md-6 col-lg-4 my-4 row align-items-center">
             <div className="col-4">
                 <img className="img-fluid" src={`/img/${image}.jpg`} alt="imagen guitarra" />
@@ -22,10 +24,10 @@ export default function GuitarItem({guitar, addToCart} : GuitarProps) {
                 <button
                     type="button"
                     className="btn btn-dark w-100"
-                    onClick={() => addToCart(guitar) } 
+                    onClick={() => dispatch({ type: 'add-to-cart', payload: { item: guitar } })}
                 >Agregar al Carrito</button>
             </div>
         </div>
-        
+
     )
 }
